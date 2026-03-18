@@ -1,5 +1,3 @@
-local modelResource = 'lm_model'
-
 ---@class ClientModelConnection: SharedBaseContainer
 ---@field definition RegisteredModelDefinition
 ---@field config table
@@ -136,7 +134,7 @@ function ClientModel.connect(config)
     assert(type(config) == 'table', 'config must be a table')
     assert(type(config.model) == 'string', 'config.model is required')
 
-    local definition = exports[modelResource]:getModelDefinition(config.model)
+    local definition = lib.callback.await('lm_model:getModelDefinition', false, config.model)
     if not definition then
         error(('model "%s" is not registered'):format(config.model), 2)
     end

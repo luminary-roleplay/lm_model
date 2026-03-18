@@ -86,6 +86,11 @@ exports('listModels', function()
     return models
 end)
 
+--- Allow clients to fetch a model definition via callback.
+lib.callback.register('lm_model:getModelDefinition', function(source, name)
+    return models[name]
+end)
+
 -- Auto cleanup when an owner resource stops.
 AddEventHandler('onResourceStop', function(resourceName)
     for name, definition in pairs(models) do
