@@ -126,3 +126,7 @@ local vehicles = ClientModel.connect({ model = 'vehicles' })
   - [subscriptions](docs/features/subscriptions.md)
   - [invoker](docs/features/invoker.md)
   - [client-requests](docs/features/client-requests.md)
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
