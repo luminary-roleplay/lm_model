@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 
 name 'lm_model'
-author 'Lumen Model'
+author 'Kode Red'
 description 'Standalone synced model library'
 version '1.0.0'
 
