@@ -1,6 +1,6 @@
 # Feature: invoker
 
-Exposes store and record methods as FiveM **exports** so other server resources can directly call them without raw event wiring. Access is restricted to an explicit allowlist, and private methods (prefixed with `_`) are always blocked.
+Exposes store and record methods as FiveM/RedM **exports** so other server resources can directly call them without raw event wiring. Access is restricted to an explicit allowlist, and private methods (prefixed with `_`) are always blocked.
 
 The generated exports are named `invoke{Prefix}Store` and `invoke{Prefix}Record`, where `Prefix` is `config.prefix` (defaults to `config.name`).
 

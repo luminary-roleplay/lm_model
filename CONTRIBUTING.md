@@ -25,7 +25,7 @@ Open an issue and include:
 2. **Feature options** — every feature key and its options table
 3. **Stack trace or error output** — copy the full server/client console output
 4. **Expected vs actual behaviour** — what you expected to happen, and what actually happened
-5. **Environment** — FiveM artifact version, ox_lib version, oxmysql version (if using the `db` feature)
+5. **Environment** — FiveM/RedM artifact version, ox_lib version, oxmysql version (if using the `db` feature)
 
 The more specific the reproduction is, the faster it gets fixed.
 
@@ -43,7 +43,7 @@ Open an issue describing:
 
 ## Development setup
 
-1. Clone or copy the resource into your FiveM server's resource folder:
+1. Clone or copy the resource into your FiveM/RedM server's resource folder:
    ```
    resources/[lib]/lm_model/
    ```

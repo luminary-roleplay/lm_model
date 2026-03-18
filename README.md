@@ -1,6 +1,8 @@
 # lm_model
 
-A standalone, modular data-model library for FiveM. It provides a structured, server-authoritative store of typed records with optional persistence, cross-resource synchronisation, and client mirroring — all wired together through a central registry.
+A standalone, modular data-model library for FiveM/RedM. It provides a structured, server-authoritative store of typed records with optional persistence, cross-resource synchronisation, and client mirroring — all wired together through a central registry.
+
+> **This library is intended for experienced Lua and FiveM/RedM developers.** It assumes a solid understanding of the FiveM/RedM resource system, server/client boundaries, net events, exports, and `ox_lib`. Issues asking for general scripting help or "how do I use Lua" will be closed without response. If you are just getting started with FiveM/RedM development, this is not the right starting point.
 
 ## Requirements
 
@@ -126,6 +128,15 @@ local vehicles = ClientModel.connect({ model = 'vehicles' })
   - [subscriptions](docs/features/subscriptions.md)
   - [invoker](docs/features/invoker.md)
   - [client-requests](docs/features/client-requests.md)
+
+## Acknowledgements
+
+This library is built on **ox_lib**, the excellent FiveM/RedM utility library that powers the class system, callbacks, and much of the ergonomic foundation here.
+
+- **[Overextended/ox_lib](https://github.com/overextended/ox_lib)** — The original library
+- **[CommunityOx/ox_lib](https://github.com/CommunityOx/ox_lib)** — The active community fork with ongoing updates (recommended)
+
+If you're setting up a new server, use the CommunityOx version.
 
 ## Contributing
 
