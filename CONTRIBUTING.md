@@ -12,6 +12,7 @@ Thank you for taking the time to contribute. This document covers everything you
 - [Code style](#code-style)
 - [Design principles](#design-principles)
 - [Pull request process](#pull-request-process)
+- [Acknowledgements](#acknowledgements)
 - [License](#license)
 
 ---
@@ -111,6 +112,17 @@ The `client_requests` and `subscriptions` features accept net events from client
 3. **Update documentation** — if you add or change a feature option, update the corresponding file in `docs/features/`. If you change the core API, update `docs/server-model.md`, `docs/client-model.md`, or `docs/remote-model.md` as appropriate
 4. **Test end-to-end** — confirm the change works against a running FiveM server with the affected feature(s) enabled
 5. **Describe what changed and why** in the PR description — not just what files were touched
+
+---
+
+## Acknowledgements
+
+lm_model is built on top of **ox_lib**, without which the class system, callback layer, and a significant amount of the ergonomics here would not exist.
+
+- Original library by [Overextended](https://github.com/overextended/ox_lib) — the foundation everything is built on.
+- Active community fork maintained by [CommunityOx](https://github.com/CommunityOx/ox_lib) — **this is the recommended version to use.** It continues to receive updates and community-driven improvements.
+
+If you are setting up a new server or updating an existing one, please use the CommunityOx fork.
 
 ---
 
