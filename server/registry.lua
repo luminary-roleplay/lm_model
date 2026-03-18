@@ -99,3 +99,6 @@ AddEventHandler('onResourceStop', function(resourceName)
         end
     end
 end)
+
+-- Check for updates
+lib.versionCheck('luminary-roleplay/lm_model')
