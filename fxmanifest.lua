@@ -1,3 +1,4 @@
+fx_verison 'cerulean'
 use_experimental_fxv2_oal 'yes'
 lua54 'yes'
 games { 'rdr3', 'gta5' }
