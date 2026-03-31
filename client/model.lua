@@ -62,6 +62,40 @@ function ClientModelConnection:resync()
     return self.records
 end
 
+--- Reload full snapshot using paged loading to avoid large single-transfer payloads.
+--- Requires the store owner to have registered a paged callback at '{eventName}:getPage'
+--- via exports.lm_model:registerPagedCallback(...). Each item returned by the paged
+--- callback must embed the primary key under the field named by `options.primaryKey`
+--- (defaults to 'id').
+---@param options {pageSize?: integer, primaryKey?: string, callbackName?: string}?
+---@return table<any, any> records
+---@return boolean usedPaging True when paged loading succeeded; false when it fell back to resync.
+function ClientModelConnection:resyncPaged(options)
+    local opts = options or {}
+    local eventName = self.definition.eventName
+    local callbackName = opts.callbackName or ('%s:getPage'):format(eventName)
+    local primaryKey = opts.primaryKey or 'id'
+    local pageSize = opts.pageSize or 150
+
+    local Paging = require('@lm_model.client.paging')
+    local items, usedPaging = Paging.loadPagedDataset(callbackName, pageSize)
+
+    if not usedPaging or not items then
+        return self:resync(), false
+    end
+
+    self.records = {}
+
+    for _, item in ipairs(items) do
+        local id = item[primaryKey]
+        if id ~= nil then
+            self.records[id] = self:_wrapRecord(id, item)
+        end
+    end
+
+    return self.records, true
+end
+
 --- Build one request event name.
 ---@param name string
 ---@return string

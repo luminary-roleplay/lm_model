@@ -28,6 +28,45 @@ local Db = require('@lm_model.imports.db')
 local ClientModel = require('@lm_model.client.model')
 ```
 
+### Paged loading for large data sets
+
+`lm_model` ships built-in paging helpers so resources with large stores can avoid sending the entire dataset in a single net transfer.
+
+**Server** — register a paged callback from your store-owner resource (no `require` needed; `registerPagedCallback` is an lm_model export):
+
+```lua
+-- server/vehicles.lua
+exports.lm_model:registerPagedCallback('vehicles:getPage', {
+    getItems = function(source)
+        return Vehicles:getAllArray()     -- return the full in-memory list; lm_model slices it
+    end,
+    map = function(record, source)
+        return record:toPublic()         -- each item must embed the primary key (e.g. { id = ..., ... })
+    end,
+})
+```
+
+**Client** — either use the standalone paging loader:
+
+```lua
+-- client/vehicles.lua
+local Paging = require('@lm_model.client.paging')
+
+local items, usedPaging = Paging.loadPagedDataset('vehicles:getPage', 150, function(item)
+    return item
+end)
+```
+
+Or use the built-in `resyncPaged()` on a `ClientModelConnection`:
+
+```lua
+local ClientModel = require('@lm_model.client.model')
+
+local vehicles = ClientModel.connect({ model = 'vehicles', features = { remote = { autoLoad = false } } })
+local records, usedPaging = vehicles:resyncPaged({ primaryKey = 'id', pageSize = 150 })
+-- falls back to vehicles:resync() automatically if the paged callback is unavailable
+```
+
 ## Core Concepts
 
 ```

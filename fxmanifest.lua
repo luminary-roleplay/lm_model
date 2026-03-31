@@ -20,6 +20,7 @@ dependencies {
 server_scripts {
     '@ox_lib/init.lua',
     'server/registry.lua',
+    'server/paging.lua',
 }
 
 files {
