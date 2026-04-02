@@ -88,5 +88,7 @@ local function registerPagedCallback(callbackName, options)
     end)
 end
 
+
+
 --- Expose so store-owner resources can register paged callbacks without requiring a file.
 exports('registerPagedCallback', registerPagedCallback)
