@@ -49,7 +49,7 @@ All SQL path fields are optional. Omit `insert` to skip DB writes on create (use
 
 ## SQL file conventions
 
-SQL files are loaded with `LoadResourceFile` from the owning resource. Use `?` placeholders compatible with oxmysql.
+SQL files are loaded with `LoadResourceFile` from the owning resource. Use `?` placeholders compatible with lm_postgres.
 
 **select_all.sql**
 ```sql
